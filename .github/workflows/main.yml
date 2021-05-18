@@ -29,5 +29,6 @@ jobs:
 
       - name: Show diff
         run: |
+          ls -la
           git diff PKGBUILD
           git diff .SRCINFO
