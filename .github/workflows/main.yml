@@ -24,5 +24,6 @@ jobs:
       - name: Test actions
         uses: ./
         with:
+          path: $GITHUB_WORKSPACE
           updpkgsums: true
           srcinfo: true
