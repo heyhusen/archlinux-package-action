@@ -5,8 +5,8 @@ FROM docker.io/library/archlinux:base-devel
 RUN pacman -Syu --needed --noconfirm pacman-contrib namcap
 
 # Setup user
-RUN useradd -m builder \
-    usermod -aG wheel builder \
+RUN useradd -m builder && \
+    usermod -aG wheel builder && \
     echo 'wheel  ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
 # Copy files
