@@ -1,5 +1,6 @@
 #!/bin/sh -l
 
+sudo chown -R builder $GITHUB_WORKSPACE
 cd $INPUT_PATH
 
 if [[ $INPUT_UPDPKGSUMS == true ]]; then
