@@ -9,7 +9,7 @@ branding:
 inputs:
   path:
     description: "Location for this action to run"
-    default: $GITHUB_WORKSPACE
+    default: $INPUT_GITHUB_WORKSPACE
     required: false
   updpkgsums:
     description: "Update checksums on PKGBUILD"
