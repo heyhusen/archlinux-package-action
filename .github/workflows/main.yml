@@ -24,6 +24,10 @@ jobs:
       - name: Test actions
         uses: ./
         with:
-          path: $GITHUB_WORKSPACE
           updpkgsums: true
           srcinfo: true
+
+      - name: Show diff
+        run: |
+          git diff PKGBUILD
+          git diff .SRCINFO
