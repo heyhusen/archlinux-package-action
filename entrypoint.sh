@@ -4,7 +4,7 @@ cd $INPUT_PATH
 
 if [[ $INPUT_UPDPKGSUMS == true ]]; then
   echo "Update checksums on PKGBUILD"
-  updpkgsums
+  sudo -u builder updpkgsums
   git diff PKGBUILD
 fi
 
