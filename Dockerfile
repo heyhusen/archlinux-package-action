@@ -2,7 +2,7 @@
 FROM docker.io/library/archlinux:base-devel
 
 # Install dependencies
-RUN pacman -Syu --needed --noconfirm pacman-contrib namcap
+RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
 
 # Setup user
 RUN useradd -m builder && \
