@@ -1,12 +1,37 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
-inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+name: "Arch Linux's package action"
+description: "GitHub Action to run Arch Linux's package tools"
+author: "datakrama"
+branding:
+  icon: "package"
+  color: "green"
+
+inputs:
+  path:
+    description: "Location for this action to run"
+    default: $GITHUB_WORKSPACE
+    required: false
+  updpkgsums:
+    description: "Update checksums on PKGBUILD"
+    default: "false"
+    required: false
+  srcinfo:
+    description: "Generate new .SRCINFO"
+    default: "false"
+    required: false
+  flags:
+    description: "Extra flags for makepkg"
+    default: "-cfs --noconfirm"
+    required: false
+  namcap:
+    description: "Validate package with namcap"
+    default: "true"
+    required: false
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.updpkgsums }}
+    - ${{ inputs.flags }}
+    - ${{ inputs.namcap }}

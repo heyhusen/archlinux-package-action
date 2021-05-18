@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Get sample PKGBUILD
+        run: wget https://github.com/official-human/nonicons-font/raw/main/PKGBUILD
+
+      - name: Test actions
+        uses: ./
+        with:
+          updpkgsums: true
+          srcinfo: true
