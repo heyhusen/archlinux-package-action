@@ -27,7 +27,7 @@ Following inputs can be used as `step.with` keys
 | `flags`           | String    | `-cfs --noconfirm`            | `false`   | Flags after `makepkg` command. Leave this empty will disable this command. |
 
 ### Examples
-#### Basic
+#### 1. Basic
 
 This action will run `makepkg -cfs --noconfirm` command, then validate PKGBUILD with namcap.
 
@@ -42,8 +42,86 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Validate package
         uses: datakrama/archlinux-package-action@v1
+```
+
+#### 2. Only generate .SRCINFO
+
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Validate package
+        uses: datakrama/archlinux-package-action@v1
+        with:
+          flags: ''
+          namcap: false
+          srcinfo: true
+```
+
+#### 3. Only update checksums on PKGBUILD
+
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Validate package
+        uses: datakrama/archlinux-package-action@v1
+        with:
+          flags: ''
+          namcap: false
+          updpkgsums: true
+```
+
+#### 4. Custom path & custom flags
+
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Validate package
+        uses: datakrama/archlinux-package-action@v1
+        with:
+          path: $GITHUB_WORKSPACE/package
+          flags: '-si --noconfirm'
+          namcap: false
 ```
 
 ## License
