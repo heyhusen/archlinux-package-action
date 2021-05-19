@@ -1,7 +1,50 @@
-# Container Action Template
+# Arch Linux's package tools action
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/datakrama/archlinux-package-action/CI?label=CI&style=flat-square)](https://github.com/datakrama/archlinux-package-action/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/datakrama/archlinux-package-action?style=flat-square)](https://github.com/datakrama/archlinux-package-action/releases) [![GitHub](https://img.shields.io/github/license/datakrama/archlinux-package-action?style=flat-square)](./LICENSE)
 
-To get started, click the `Use this template` button on this repository [which will create a new repository based on this template](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/).
+This action allows running tools needed for creating Arch Linux (and AUR) package. 
+Here's what this action can do:
 
-For info on how to build your first Container action, see the [toolkit docs folder](https://github.com/actions/toolkit/blob/master/docs/container-action.md).
+- Update checksums on PKGBUILD file
+- Generate [.SRCINFO](https://wiki.archlinux.org/title/.SRCINFO) based on your PKGBUILD
+- Validate PKGBUILD with [namcap](https://wiki.archlinux.org/title/namcap)
+- Run [makepkg](https://wiki.archlinux.org/title/Makepkg) with custom flags (rather than default)
+
+## Usage
+
+### Requirement
+- [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) file inside your repository.
+
+### Customizing
+Following inputs can be used as `step.with` keys
+
+| Name              | Type      | Default                       | Required  | Description                           |
+|-------------------|-----------|-------------------------------|-----------|---------------------------------------|
+| `path`            | String    | $GITHUB_WORKSPACE             | `false`   | Path where PKGBUILD is located        |
+| `updpkgsums`      | Boolean   | `false`                       | `false`   | Update checksums on your PKGBUILD     |
+| `srcinfo`         | Boolean   | `false`                       | `false`   | Generate new .SRCINFO                 |
+| `namcap`          | Boolean   | `true`                        | `false`   | Validate PKGBUILD                     |
+| `flags`           | String    | `-cfs --noconfirm`            | `false`   | Flags after `makepkg` command. Leave this empty will disable this command. |
+
+### Examples
+#### Basic
+
+This action will run `makepkg -cfs --noconfirm` command, then validate PKGBUILD with namcap.
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate package
+        uses: datakrama/archlinux-package-action@v1
+```
+
+## License
+The scripts and documentation in this project are released under the [MIT License](./LICENSE)
