@@ -32,6 +32,8 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
+    - ${{ inputs.path }}
     - ${{ inputs.updpkgsums }}
+    - ${{ inputs.srcinfo }}
     - ${{ inputs.flags }}
     - ${{ inputs.namcap }}
