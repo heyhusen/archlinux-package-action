@@ -30,10 +30,11 @@ inputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "ghcr.io/datakrama/archlinux-package-action:1"
   args:
     - ${{ inputs.path }}
     - ${{ inputs.updpkgsums }}
     - ${{ inputs.srcinfo }}
     - ${{ inputs.flags }}
     - ${{ inputs.namcap }}
+
