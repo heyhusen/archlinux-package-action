@@ -5,7 +5,9 @@ FROM docker.io/library/archlinux:base-devel
 RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
 
 # Setup user
-RUN useradd -m builder && \
+RUN useradd --create-home --shell /bin/bash builder && \
+    passwd --delete builder && \
+    chown -vR builder:builder /home/builder && \
     usermod -aG wheel builder && \
     echo 'wheel  ALL=(ALL:ALL) ALL' >> /etc/sudoers
 
