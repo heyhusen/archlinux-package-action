@@ -4,13 +4,87 @@ on:
   push:
     branches:
       - "main"
+    tags:
+      - 'v*.*.*'
   pull_request:
     branches:
       - "main"
 
 jobs:
-  build:
-    name: Build
+  pretest:
+    name: Pretest (with Dockerfile)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Update action.yml to build locally
+        run: |
+          sed -i 's/.*image\:.*/  image\: \"Dockerfile\"/' action.yml
+          cat action.yml
+
+      - name: Get sample PKGBUILD
+        run: wget https://github.com/official-human/nonicons-font/raw/main/PKGBUILD
+
+      - name: Running tests
+        uses: ./
+        with:
+          updpkgsums: true
+          srcinfo: true
+
+      - name: Show diff
+        run: |
+          ls -la
+          git diff PKGBUILD
+          git diff .SRCINFO
+
+  publish:
+    name: Publish container image
+    needs: pretest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: OCI meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=edge,branch=main
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=sha
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to GHCR
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  test:
+    name: Test (with pre-built Container Image)
+    needs: publish
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +94,13 @@ jobs:
       - name: Get sample PKGBUILD
         run: wget https://github.com/official-human/nonicons-font/raw/main/PKGBUILD
 
-      - name: Test actions
+      - name: Update action.yml to use edge tagged container image
+        if: ${{ github.event_name == 'pull_request' || github.ref ~= 'refs/tags/*' }}
+        run: |
+          sed -i 's/.*image\:.*/  image\: \"ghcr.io\/${{ github.repository_owner }}\/${{ github.event.repository.name }}\:edge\"/' action.yml
+          cat action.yml
+
+      - name: Running tests
         uses: ./
         with:
           updpkgsums: true
