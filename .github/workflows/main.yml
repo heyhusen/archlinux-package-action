@@ -95,7 +95,7 @@ jobs:
         run: wget https://github.com/official-human/nonicons-font/raw/main/PKGBUILD
 
       - name: Update action.yml to use edge tagged container image
-        if: ${{ github.event_name == 'pull_request' || github.ref ~= 'refs/tags/*' }}
+        if: ${{ github.event_name == 'pull_request' || github.ref != 'refs/tags/*' }}
         run: |
           sed -i 's/.*image\:.*/  image\: \"ghcr.io\/${{ github.repository_owner }}\/${{ github.event.repository.name }}\:edge\"/' action.yml
           cat action.yml
