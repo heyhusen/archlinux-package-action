@@ -2,11 +2,7 @@
 
 # Set path
 echo '::group::Configuring path with permission'
-WORKPATH=$GITHUB_WORKSPACE
-if [[ -n "$INPUT_PATH" ]]; then
-    WORKPATH=$INPUT_PATH
-fi
-
+WORKPATH=$GITHUB_WORKSPACE/$INPUT_PATH
 # Set path permision
 sudo chown -R builder $WORKPATH
 cd $WORKPATH

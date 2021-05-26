@@ -13,20 +13,24 @@ Here's what this action can do:
 ## Usage
 
 ### Requirement
+
 - [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) file inside your repository.
+- Use [actions/checkout](https://github.com/actions/checkout) in previous step. This is important, unless you want your [$GITHUB_WORKSPACE](https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables) folder to be empty.
 
 ### Customizing
+
 Following inputs can be used as `step.with` keys
 
 | Name              | Type      | Default                       | Required  | Description                           |
 |-------------------|-----------|-------------------------------|-----------|---------------------------------------|
-| `path`            | String    | $GITHUB_WORKSPACE             | `false`   | Path where PKGBUILD is located        |
+| `path`            | String    |                               | `false`   | Path where PKGBUILD is located. This path always located under $GITHUB_WORKSPACE |
 | `updpkgsums`      | Boolean   | `false`                       | `false`   | Update checksums on your PKGBUILD     |
 | `srcinfo`         | Boolean   | `false`                       | `false`   | Generate new .SRCINFO                 |
 | `namcap`          | Boolean   | `true`                        | `false`   | Validate PKGBUILD                     |
 | `flags`           | String    | `-cfs --noconfirm`            | `false`   | Flags after `makepkg` command. Leave this empty will disable this command. |
 
 ### Examples
+
 #### 1. Basic
 
 This action will run `makepkg -cfs --noconfirm` command, then validate PKGBUILD with namcap.
@@ -50,7 +54,6 @@ jobs:
 ```
 
 #### 2. Only generate .SRCINFO
-
 
 ```yaml
 name: CI
@@ -76,7 +79,6 @@ jobs:
 
 #### 3. Only update checksums on PKGBUILD
 
-
 ```yaml
 name: CI
 
@@ -101,7 +103,6 @@ jobs:
 
 #### 4. Custom path & custom flags
 
-
 ```yaml
 name: CI
 
@@ -125,4 +126,5 @@ jobs:
 ```
 
 ## License
+
 The scripts and documentation in this project are released under the [MIT License](./LICENSE)
