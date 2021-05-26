@@ -1,36 +1,36 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
 name: "Arch Linux's package action"
 description: "GitHub Action to run Arch Linux's package tools"
-author: "datakrama"
+author: 'datakrama'
 branding:
-  icon: "package"
-  color: "green"
+  icon: 'package'
+  color: 'green'
 
 inputs:
   path:
-    description: "Location for this action to run"
-    default: ""
+    description: 'Location for this action to run'
+    default: ''
     required: false
   updpkgsums:
-    description: "Update checksums on PKGBUILD"
-    default: "false"
+    description: 'Update checksums on PKGBUILD'
+    default: 'false'
     required: false
   srcinfo:
-    description: "Generate new .SRCINFO"
-    default: "false"
+    description: 'Generate new .SRCINFO'
+    default: 'false'
     required: false
   flags:
-    description: "Extra flags for makepkg"
-    default: "-cfs --noconfirm"
+    description: 'Extra flags for makepkg'
+    default: '-cfs --noconfirm'
     required: false
   namcap:
-    description: "Validate package with namcap"
-    default: "true"
+    description: 'Validate package with namcap'
+    default: 'true'
     required: false
 
 runs:
-  using: "docker"
-  image: "ghcr.io/datakrama/archlinux-package-action:1"
+  using: 'docker'
+  image: 'docker://ghcr.io/datakrama/archlinux-package-action:1'
   args:
     - ${{ inputs.path }}
     - ${{ inputs.updpkgsums }}
