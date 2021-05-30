@@ -5,7 +5,7 @@ echo '::group::Copying file from $WORKPATH to /tmp/gh-action'
 WORKPATH=$GITHUB_WORKSPACE/$INPUT_PATH
 # Set path permision
 sudo -u builder mkdir /tmp/gh-action
-sudo -u builder cp -rfv ./.git /tmp/gh-action/.git
+sudo -u builder cp -rfv $WORKPATH/.git /tmp/gh-action/.git
 sudo -u builder cp -fv $WORKPATH/PKGBUILD /tmp/gh-action/PKGBUILD
 cd /tmp/gh-action
 echo '::endgroup::'
