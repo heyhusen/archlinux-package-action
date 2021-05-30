@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Set path
-echo '::group::Configuring path with permission'
+echo '::group::Copying $WORKPATH to /tmp/gh-action'
 WORKPATH=$GITHUB_WORKSPACE/$INPUT_PATH
 # Set path permision
-sudo chown -R builder $WORKPATH
-cd $WORKPATH
+sudo -u builder cp -rfv $WORKPATH /tmp/gh-action
+cd /tmp/gh-action
 echo '::endgroup::'
 
 # Update checksums
@@ -36,4 +36,9 @@ echo '::group::Running makepkg with flags'
 if [[ -n "$INPUT_FLAGS" ]]; then
     sudo -u builder makepkg $INPUT_FLAGS
 fi
+echo '::endgroup::'
+
+echo '::group::Copying /tmp/gh-action to $WORKPATH'
+sudo -u builder cp -rfv /tmp/gh-action $WORKPATH
+cd $WORKPATH
 echo '::endgroup::'
