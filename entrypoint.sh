@@ -39,6 +39,6 @@ fi
 echo '::endgroup::'
 
 echo '::group::Copying /tmp/gh-action to $WORKPATH'
-sudo -u builder cp -rfv /tmp/gh-action $WORKPATH
+cp -rfv /tmp/gh-action $WORKPATH
 cd $WORKPATH
 echo '::endgroup::'
