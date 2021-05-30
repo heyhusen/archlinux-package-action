@@ -39,6 +39,6 @@ fi
 echo '::endgroup::'
 
 echo '::group::Copying /tmp/gh-action to $WORKPATH'
-rsync --avh --delete /tmp/gh-action/ $WORKPATH/
+rsync -avh --delete /tmp/gh-action/ $WORKPATH/
 cd $WORKPATH
 echo '::endgroup::'
