@@ -12,7 +12,7 @@ on:
 
 jobs:
   pretest:
-    name: Pretest (with Dockerfile)
+    name: Test (with Dockerfile)
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +25,9 @@ jobs:
           cat action.yml
 
       - name: Get sample PKGBUILD
-        run: wget https://github.com/official-human/nonicons-font/raw/main/PKGBUILD
+        run: wget https://github.com/datakrama/nonicons-font/raw/main/PKGBUILD
 
-      - name: Running tests
+      - name: Running test
         uses: ./
         with:
           updpkgsums: true
@@ -84,7 +84,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   test:
-    name: Test (with pre-built Container Image)
+    name: Test (with prebuilt Container Image)
     needs: publish
     runs-on: ubuntu-latest
 
@@ -93,7 +93,7 @@ jobs:
         uses: actions/checkout@v2.3.4
 
       - name: Get sample PKGBUILD
-        run: wget https://github.com/official-human/nonicons-font/raw/main/PKGBUILD
+        run: wget https://github.com/datakrama/nonicons-font/raw/main/PKGBUILD
 
       - name: Update action.yml to use edge tagged container image
         if: github.ref == 'refs/heads/main'
@@ -101,7 +101,7 @@ jobs:
           sed -i 's/.*image\:.*/  image\: \"docker\:\/\/ghcr.io\/${{ github.repository_owner }}\/${{ github.event.repository.name }}\:edge\"/' action.yml
           cat action.yml
 
-      - name: Running tests
+      - name: Running test
         uses: ./
         with:
           updpkgsums: true
