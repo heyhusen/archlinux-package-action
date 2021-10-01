@@ -19,6 +19,14 @@ if [[ -n $INPUT_PKGVER ]]; then
     echo "::endgroup::"
 fi
 
+# Update pkgver
+if [[ -n $INPUT_PKGREL ]]; then
+    echo "::group::Updating pkgrel on PKGBUILD"
+    sed -i "s:^pkgrel=.*$:pkgrel=$INPUT_PKGREL:g" PKGBUILD
+    git diff PKGBUILD
+    echo "::endgroup::"
+fi
+
 # Update checksums
 if [[ $INPUT_UPDPKGSUMS == true ]]; then
     echo "::group::Updating checksums on PKGBUILD"

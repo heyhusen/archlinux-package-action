@@ -5,9 +5,9 @@
 This action allows running tools needed for creating Arch Linux (and AUR) package. 
 Here's what this action can do:
 
-- Update checksums on PKGBUILD file
-- Generate [.SRCINFO](https://wiki.archlinux.org/title/.SRCINFO) based on your PKGBUILD
+- Update `pkgver`, `pkgrel`, or checksums on PKGBUILD file
 - Validate PKGBUILD with [namcap](https://wiki.archlinux.org/title/namcap)
+- Generate [.SRCINFO](https://wiki.archlinux.org/title/.SRCINFO) based on your PKGBUILD
 - Run [makepkg](https://wiki.archlinux.org/title/Makepkg) with custom flags (rather than default)
 
 ## Usage
@@ -25,6 +25,7 @@ Following inputs can be used as `step.with` keys
 |-------------------|-----------|-------------------------------|-----------|---------------------------------------|
 | `path`            | String    |                               | `false`   | Path where PKGBUILD is located. This path always located under $GITHUB_WORKSPACE |
 | `pkgver`          | String    |                               | `false`   | Update `pkgver` on your PKGBUILD |
+| `pkgrel`          | Integer   |                               | `false`   | Update `pkgrel` on your PKGBUILD |
 | `updpkgsums`      | Boolean   | `false`                       | `false`   | Update checksums on your PKGBUILD     |
 | `srcinfo`         | Boolean   | `false`                       | `false`   | Generate new .SRCINFO                 |
 | `namcap`          | Boolean   | `true`                        | `false`   | Validate PKGBUILD                     |
@@ -121,11 +122,11 @@ jobs:
       - name: Validate package
         uses: datakrama/archlinux-package-action@v1
         with:
-          path: $GITHUB_WORKSPACE/package
+          path: package
           flags: '-si --noconfirm'
           namcap: false
 ```
 
 ## License
 
-The scripts and documentation in this project are released under the [MIT License](./LICENSE)
+The scripts and documentation in this project are released under the [MIT License](LICENSE)
