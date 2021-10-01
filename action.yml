@@ -4,7 +4,7 @@ description: "GitHub Action to run Arch Linux's package tools"
 author: 'datakrama'
 branding:
   icon: 'package'
-  color: 'green'
+  color: 'blue'
 
 inputs:
   path:
