@@ -11,6 +11,10 @@ inputs:
     description: 'Location for this action to run'
     default: ''
     required: false
+  pkgver:
+    description: 'Update pkgver on PKGBUILD'
+    default: ''
+    required: false
   updpkgsums:
     description: 'Update checksums on PKGBUILD'
     default: 'false'
@@ -33,6 +37,7 @@ runs:
   image: 'docker://ghcr.io/datakrama/archlinux-package-action:1'
   args:
     - ${{ inputs.path }}
+    - ${{ inputs.pkgver }}
     - ${{ inputs.updpkgsums }}
     - ${{ inputs.srcinfo }}
     - ${{ inputs.flags }}
