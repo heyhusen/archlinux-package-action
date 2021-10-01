@@ -24,6 +24,7 @@ Following inputs can be used as `step.with` keys
 | Name              | Type      | Default                       | Required  | Description                           |
 |-------------------|-----------|-------------------------------|-----------|---------------------------------------|
 | `path`            | String    |                               | `false`   | Path where PKGBUILD is located. This path always located under $GITHUB_WORKSPACE |
+| `pkgver`          | String    |                               | `false`   | Update `pkgver` on your PKGBUILD |
 | `updpkgsums`      | Boolean   | `false`                       | `false`   | Update checksums on your PKGBUILD     |
 | `srcinfo`         | Boolean   | `false`                       | `false`   | Generate new .SRCINFO                 |
 | `namcap`          | Boolean   | `true`                        | `false`   | Validate PKGBUILD                     |

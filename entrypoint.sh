@@ -11,6 +11,14 @@ sudo -u builder cp -fv "$WORKPATH"/PKGBUILD /tmp/gh-action/PKGBUILD
 cd /tmp/gh-action
 echo "::endgroup::"
 
+# Update pkgver
+if [[ -n $INPUT_PKGVER ]]; then
+    echo "::group::Updating pkgver on PKGBUILD"
+    sed -i "s:^pkgver=.*$:pkgver=$INPUT_PKGVER:g" PKGBUILD
+    git diff PKGBUILD
+    echo "::endgroup::"
+fi
+
 # Update checksums
 if [[ $INPUT_UPDPKGSUMS == true ]]; then
     echo "::group::Updating checksums on PKGBUILD"
