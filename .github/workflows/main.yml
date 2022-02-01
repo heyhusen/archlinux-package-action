@@ -25,7 +25,7 @@ jobs:
           cat action.yml
 
       - name: Get sample PKGBUILD
-        run: wget https://github.com/datakrama/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
+        run: wget https://github.com/hapakaien/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
 
       - name: Running test
         uses: ./
@@ -95,7 +95,7 @@ jobs:
         uses: actions/checkout@v2.4.0
 
       - name: Get sample PKGBUILD
-        run: wget https://github.com/datakrama/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
+        run: wget https://github.com/hapakaien/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
 
       - name: Update action.yml to use edge tagged container image
         if: github.ref == 'refs/heads/main'

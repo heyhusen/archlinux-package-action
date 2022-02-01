@@ -5,11 +5,10 @@ FROM docker.io/library/archlinux:base-devel
 RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
 
 # Setup user
-RUN useradd --create-home --shell /bin/bash builder && \
-    passwd --delete builder && \
-    chown -vR builder:builder /home/builder && \
-    usermod -aG wheel builder && \
-    echo 'wheel  ALL=(ALL:ALL) ALL' >> /etc/sudoers
+RUN useradd -m builder && \
+    echo 'builder ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+WORKDIR /home/builder
+USER builder
 
 # Copy files
 COPY LICENSE README.md /

@@ -1,6 +1,6 @@
 # Arch Linux's package tools action
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/datakrama/archlinux-package-action/CI?label=CI&style=flat-square)](https://github.com/datakrama/archlinux-package-action/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/datakrama/archlinux-package-action?style=flat-square)](https://github.com/datakrama/archlinux-package-action/releases) [![GitHub](https://img.shields.io/github/license/datakrama/archlinux-package-action?style=flat-square)](./LICENSE)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hapakaien/archlinux-package-action/CI?label=CI&style=flat-square)](https://github.com/hapakaien/archlinux-package-action/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hapakaien/archlinux-package-action?style=flat-square)](https://github.com/hapakaien/archlinux-package-action/releases) [![GitHub](https://img.shields.io/github/license/hapakaien/archlinux-package-action?style=flat-square)](./LICENSE)
 
 This action allows running tools needed for creating Arch Linux (and AUR) package. 
 Here's what this action can do:
@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: datakrama/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v1
 ```
 
 #### 2. Only generate .SRCINFO
@@ -72,7 +72,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: datakrama/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v1
         with:
           flags: ''
           namcap: false
@@ -96,7 +96,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: datakrama/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v1
         with:
           flags: ''
           namcap: false
@@ -120,7 +120,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: datakrama/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v1
         with:
           path: package
           flags: '-si --noconfirm'

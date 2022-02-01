@@ -2,13 +2,15 @@
 set -e
 
 # Set path
-echo "::group::Copying file from $WORKPATH to /tmp/gh-action"
 WORKPATH=$GITHUB_WORKSPACE/$INPUT_PATH
+HOME=/home/builder
+echo "::group::Copying files from $WORKPATH to $HOME/gh-action"
 # Set path permision
-sudo -u builder mkdir /tmp/gh-action
-sudo -u builder cp -rfv "$GITHUB_WORKSPACE"/.git /tmp/gh-action/.git
-sudo -u builder cp -fv "$WORKPATH"/PKGBUILD /tmp/gh-action/PKGBUILD
-cd /tmp/gh-action
+cd $HOME
+mkdir gh-action
+cd gh-action
+cp -rfv "$GITHUB_WORKSPACE"/.git ./
+sudo cp -fv "$WORKPATH"/PKGBUILD ./
 echo "::endgroup::"
 
 # Update pkgver
@@ -30,7 +32,7 @@ fi
 # Update checksums
 if [[ $INPUT_UPDPKGSUMS == true ]]; then
     echo "::group::Updating checksums on PKGBUILD"
-    sudo -u builder updpkgsums
+    updpkgsums
     git diff PKGBUILD
     echo "::endgroup::"
 fi
@@ -38,7 +40,7 @@ fi
 # Generate .SRCINFO
 if [[ $INPUT_SRCINFO == true ]]; then
     echo "::group::Generating new .SRCINFO based on PKGBUILD"
-    sudo -u builder makepkg --printsrcinfo > .SRCINFO
+    makepkg --printsrcinfo > .SRCINFO
     git diff .SRCINFO
     echo "::endgroup::"
 fi
@@ -53,13 +55,13 @@ fi
 # Run makepkg
 if [[ -n $INPUT_FLAGS ]]; then
     echo "::group::Running makepkg with flags"
-    sudo -u builder makepkg $INPUT_FLAGS
+    makepkg $INPUT_FLAGS
     echo "::endgroup::"
 fi
 
-echo "::group::Copying files from /tmp/gh-action to $WORKPATH"
-cp -fv /tmp/gh-action/PKGBUILD "$WORKPATH"/PKGBUILD
-if [[ -e /tmp/gh-action/.SRCINFO ]]; then
-    cp -fv /tmp/gh-action/.SRCINFO "$WORKPATH"/.SRCINFO
+echo "::group::Copying files from $HOME/gh-action to $WORKPATH"
+sudo cp -fv PKGBUILD "$WORKPATH"/PKGBUILD
+if [[ -e .SRCINFO ]]; then
+    sudo cp -fv .SRCINFO "$WORKPATH"/.SRCINFO
 fi
 echo "::endgroup::"
