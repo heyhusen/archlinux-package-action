@@ -38,7 +38,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/hapakaien/archlinux-package-action:1'
+  image: 'docker://ghcr.io/hapakaien/archlinux-package-action:2'
   args:
     - ${{ inputs.path }}
     - ${{ inputs.pkgver }}
