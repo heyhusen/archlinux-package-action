@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Move repo from datakrama to hapakaien
 - `builder` user is added to sudoers directly instead of via the wheel group
+- Replace Docker with Buildah in CI
 
 ### Fixed
 
