@@ -10,7 +10,7 @@ cd $HOME
 mkdir gh-action
 cd gh-action
 cp -rfv "$GITHUB_WORKSPACE"/.git ./
-sudo cp -fv "$WORKPATH"/PKGBUILD ./
+cp -fv "$WORKPATH"/PKGBUILD ./
 echo "::endgroup::"
 
 # Update pkgver
