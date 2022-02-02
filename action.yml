@@ -1,7 +1,7 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
 name: "Arch Linux's package action"
 description: "GitHub Action to run Arch Linux's package tools"
-author: 'datakrama'
+author: 'hapakaien'
 branding:
   icon: 'package'
   color: 'blue'
@@ -38,7 +38,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/datakrama/archlinux-package-action:1'
+  image: 'docker://ghcr.io/hapakaien/archlinux-package-action:1'
   args:
     - ${{ inputs.path }}
     - ${{ inputs.pkgver }}
