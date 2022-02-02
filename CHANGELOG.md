@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2022-02-02
+
 ### Changed
 
-- Move repo from datakrama to hapakaien
+- Move repo from hapakaien to hapakaien
 - `builder` user is added to sudoers directly instead of via the wheel group
 - Replace Docker with Buildah in CI
 
@@ -59,10 +61,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/datakrama/archlinux-package-action/compare/v1.1.1...HEAD
-[1.1.1]: https://github.com/datakrama/archlinux-package-action/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/datakrama/archlinux-package-action/compare/v1.0.3...v1.1.0
-[1.0.3]: https://github.com/datakrama/archlinux-package-action/compare/v1.0.2...v1.0.3
-[1.0.2]: https://github.com/datakrama/archlinux-package-action/compare/v1.0.1...v1.0.2
-[1.0.1]: https://github.com/datakrama/archlinux-package-action/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/datakrama/archlinux-package-action/releases/tag/v1.0.0
+[Unreleased]: https://github.com/hapakaien/archlinux-package-action/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/hapakaien/archlinux-package-action/compare/v1.1.1...v2.0.0
+[1.1.1]: https://github.com/hapakaien/archlinux-package-action/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/hapakaien/archlinux-package-action/compare/v1.0.3...v1.1.0
+[1.0.3]: https://github.com/hapakaien/archlinux-package-action/compare/v1.0.2...v1.0.3
+[1.0.2]: https://github.com/hapakaien/archlinux-package-action/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/hapakaien/archlinux-package-action/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/hapakaien/archlinux-package-action/releases/tag/v1.0.0

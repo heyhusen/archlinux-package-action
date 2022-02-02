@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: hapakaien/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v2
 ```
 
 #### 2. Only generate .SRCINFO
@@ -72,7 +72,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: hapakaien/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v2
         with:
           flags: ''
           namcap: false
@@ -96,7 +96,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: hapakaien/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v2
         with:
           flags: ''
           namcap: false
@@ -120,7 +120,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: hapakaien/archlinux-package-action@v1
+        uses: hapakaien/archlinux-package-action@v2
         with:
           path: package
           flags: '-si --noconfirm'
