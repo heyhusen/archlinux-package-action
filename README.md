@@ -21,15 +21,16 @@ Here's what this action can do:
 
 Following inputs can be used as `step.with` keys
 
-| Name              | Type      | Default                       | Required  | Description                           |
-|-------------------|-----------|-------------------------------|-----------|---------------------------------------|
-| `path`            | String    |                               | `false`   | Path where PKGBUILD is located. This path always located under $GITHUB_WORKSPACE |
-| `pkgver`          | String    |                               | `false`   | Update `pkgver` on your PKGBUILD |
-| `pkgrel`          | Integer   |                               | `false`   | Update `pkgrel` on your PKGBUILD |
-| `updpkgsums`      | Boolean   | `false`                       | `false`   | Update checksums on your PKGBUILD     |
-| `srcinfo`         | Boolean   | `false`                       | `false`   | Generate new .SRCINFO                 |
-| `namcap`          | Boolean   | `true`                        | `false`   | Validate PKGBUILD                     |
-| `flags`           | String    | `-cfs --noconfirm`            | `false`   | Flags after `makepkg` command. Leave this empty will disable this command. |
+| Name         | Type    | Default            | Required | Description                                                                      |
+| ------------ | ------- | ------------------ | -------- | -------------------------------------------------------------------------------- |
+| `path`       | String  |                    | `false`  | Path where PKGBUILD is located. This path always located under $GITHUB_WORKSPACE |
+| `pkgver`     | String  |                    | `false`  | Update `pkgver` on your PKGBUILD                                                 |
+| `pkgrel`     | Integer |                    | `false`  | Update `pkgrel` on your PKGBUILD                                                 |
+| `updpkgsums` | Boolean | `false`            | `false`  | Update checksums on your PKGBUILD                                                |
+| `srcinfo`    | Boolean | `false`            | `false`  | Generate new .SRCINFO                                                            |
+| `namcap`     | Boolean | `true`             | `false`  | Validate PKGBUILD                                                                |
+| `flags`      | String  | `-cfs --noconfirm` | `false`  | Flags after `makepkg` command. Leave this empty will disable this command.       |
+| `aur`        | Boolean | `false`            | `false`  | Resolve dependencies using paru                                                  |
 
 ### Examples
 
