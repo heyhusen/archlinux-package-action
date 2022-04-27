@@ -40,7 +40,7 @@ fi
 # Generate .SRCINFO
 if [[ $INPUT_SRCINFO == true ]]; then
     echo "::group::Generating new .SRCINFO based on PKGBUILD"
-    makepkg --printsrcinfo > .SRCINFO
+    makepkg --printsrcinfo >.SRCINFO
     git diff .SRCINFO
     echo "::endgroup::"
 fi
@@ -49,6 +49,14 @@ fi
 if [[ $INPUT_NAMCAP == true ]]; then
     echo "::group::Validating PKGBUILD with namcap"
     namcap -i PKGBUILD
+    echo "::endgroup::"
+fi
+
+# Install depends using paru from aur
+if [[ -n $INPUT_AUR ]]; then
+    echo "::group::Installing depends using paru"
+    source PKGBUILD
+    paru -Syu --removemake --needed --noconfirm "${depends[@]}" "${makedepends[@]}"
     echo "::endgroup::"
 fi
 

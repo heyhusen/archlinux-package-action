@@ -35,6 +35,10 @@ inputs:
     description: 'Validate package with namcap'
     default: 'true'
     required: false
+  aur:
+    description: 'Resolve dependencies using AUR'
+    default: 'false'
+    required: false
 
 runs:
   using: 'docker'
@@ -47,3 +51,4 @@ runs:
     - ${{ inputs.srcinfo }}
     - ${{ inputs.flags }}
     - ${{ inputs.namcap }}
+    - ${{ inputs.aur }}
