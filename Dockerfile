@@ -6,6 +6,7 @@ RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
 
 # Add multilib repository
 RUN printf '[multilib]\nInclude = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+RUN pacman -Sy
 
 # Setup user
 RUN useradd -m builder && \
