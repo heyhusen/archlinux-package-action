@@ -1,7 +1,7 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
-name: "Arch Linux's package action"
-description: "GitHub Action to run Arch Linux's package tools"
-author: 'hapakaien'
+name: "Arch Linux's package builder"
+description: "GitHub Action to build Arch Linux's package"
+author: 'kamack38'
 branding:
   icon: 'package'
   color: 'blue'
