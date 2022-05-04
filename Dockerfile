@@ -1,8 +1,11 @@
 # Base image
-FROM docker.io/library/archlinux:base-devel
+FROM archlinux:base-devel
 
 # Install dependencies
 RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
+
+# Add multilib repository
+RUN printf '[multilib]\nInclude = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 
 # Setup user
 RUN useradd -m builder && \
