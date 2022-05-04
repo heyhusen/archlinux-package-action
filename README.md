@@ -2,7 +2,7 @@
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/hapakaien/archlinux-package-action/CI?label=CI&style=flat-square)](https://github.com/hapakaien/archlinux-package-action/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hapakaien/archlinux-package-action?style=flat-square)](https://github.com/hapakaien/archlinux-package-action/releases) [![GitHub](https://img.shields.io/github/license/hapakaien/archlinux-package-action?style=flat-square)](./LICENSE)
 
-This action allows running tools needed for creating Arch Linux (and AUR) package. 
+This action allows running tools needed for creating Arch Linux (and AUR) package.
 Here's what this action can do:
 
 - Update `pkgver`, `pkgrel`, or checksums on PKGBUILD file
@@ -21,15 +21,16 @@ Here's what this action can do:
 
 Following inputs can be used as `step.with` keys
 
-| Name              | Type      | Default                       | Required  | Description                           |
-|-------------------|-----------|-------------------------------|-----------|---------------------------------------|
-| `path`            | String    |                               | `false`   | Path where PKGBUILD is located. This path always located under $GITHUB_WORKSPACE |
-| `pkgver`          | String    |                               | `false`   | Update `pkgver` on your PKGBUILD |
-| `pkgrel`          | Integer   |                               | `false`   | Update `pkgrel` on your PKGBUILD |
-| `updpkgsums`      | Boolean   | `false`                       | `false`   | Update checksums on your PKGBUILD     |
-| `srcinfo`         | Boolean   | `false`                       | `false`   | Generate new .SRCINFO                 |
-| `namcap`          | Boolean   | `true`                        | `false`   | Validate PKGBUILD                     |
-| `flags`           | String    | `-cfs --noconfirm`            | `false`   | Flags after `makepkg` command. Leave this empty will disable this command. |
+| Name         | Type    | Default            | Required | Description                                                                      |
+| ------------ | ------- | ------------------ | -------- | -------------------------------------------------------------------------------- |
+| `path`       | String  |                    | `false`  | Path where PKGBUILD is located. This path always located under $GITHUB_WORKSPACE |
+| `pkgver`     | String  |                    | `false`  | Update `pkgver` on your PKGBUILD                                                 |
+| `pkgrel`     | Integer |                    | `false`  | Update `pkgrel` on your PKGBUILD                                                 |
+| `updpkgsums` | Boolean | `false`            | `false`  | Update checksums on your PKGBUILD                                                |
+| `srcinfo`    | Boolean | `false`            | `false`  | Generate new .SRCINFO                                                            |
+| `namcap`     | Boolean | `true`             | `false`  | Validate PKGBUILD                                                                |
+| `flags`      | String  | `-cfs --noconfirm` | `false`  | Flags after `makepkg` command. Leave this empty will disable this command.       |
+| `aur`        | Boolean | `false`            | `false`  | Resolve dependencies using paru                                                  |
 
 ### Examples
 
