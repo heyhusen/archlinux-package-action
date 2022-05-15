@@ -53,7 +53,7 @@ if [[ $INPUT_NAMCAP == true ]]; then
 fi
 
 # Install depends using paru from aur
-if [[ -n $INPUT_AUR ]]; then
+if [[ $INPUT_AUR == true ]]; then
     echo "::group::Installing depends using paru"
     source PKGBUILD
     paru -Syu --removemake --needed --noconfirm "${depends[@]}" "${makedepends[@]}"
