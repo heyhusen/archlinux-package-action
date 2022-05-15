@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Wrong conditional using paru
+
 ## [2.1.0] - 2022-05-05
 
 ### Added
