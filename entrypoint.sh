@@ -55,7 +55,7 @@ fi
 # Install depends using paru from aur
 if [[ -n $INPUT_PARU ]]; then
     echo "::group::Making package using paru"
-    paru -U
+    paru -U --noconfirm
     echo "::endgroup::"
 elif [[ -n $INPUT_FLAGS ]]; then
     echo "::group::Running makepkg with flags"
