@@ -35,8 +35,8 @@ inputs:
     description: 'Validate package with namcap'
     default: 'true'
     required: false
-  aur:
-    description: 'Resolve dependencies using paru'
+  paru:
+    description: 'Make package using paru'
     default: 'false'
     required: false
 

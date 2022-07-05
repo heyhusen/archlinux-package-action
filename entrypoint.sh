@@ -53,15 +53,11 @@ if [[ $INPUT_NAMCAP == true ]]; then
 fi
 
 # Install depends using paru from aur
-if [[ $INPUT_AUR == true ]]; then
-    echo "::group::Installing depends using paru"
-    source PKGBUILD
-    paru -Syu --removemake --needed --noconfirm "${depends[@]}" "${makedepends[@]}"
+if [[ -n $INPUT_PARU ]]; then
+    echo "::group::Making package using paru"
+    paru -U
     echo "::endgroup::"
-fi
-
-# Run makepkg
-if [[ -n $INPUT_FLAGS ]]; then
+elif [[ -n $INPUT_FLAGS ]]; then
     echo "::group::Running makepkg with flags"
     makepkg $INPUT_FLAGS
     echo "::endgroup::"
