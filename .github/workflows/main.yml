@@ -112,7 +112,7 @@ jobs:
           REPOSITORY_NAME=${{ github.event.repository.name }}
           REPOSITORY_NAME=$(echo $REPOSITORY_NAME | tr '[:upper:]' '[:lower:]')
           
-          sed -i 's/.*image\:.*/  image\: \"docker\:\/\/ghcr.io\/${REPOSITORY_OWNER}\/${REPOSITORY_NAME}\:edge\"/' action.yml
+          sed -i "s/.*image\:.*/  image\: \"docker\:\/\/ghcr.io\/${REPOSITORY_OWNER}\/${REPOSITORY_NAME}\:edge\"/" action.yml
           cat action.yml
 
       - name: Running test
