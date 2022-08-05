@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2022-08-05
+
+### Added
+
+- Option to update archlinux-keyring - by @ReenigneArcher
+- Make repository name lowercase - by @ReenigneArcher
+
 ## [2.1.1] - 2022-05-15
 
 ### Fixed
@@ -17,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Option to resolve deps using paru (from AUR)
+- Option to resolve deps using paru (from AUR) - by @kamack38
 
 ## [2.0.3] - 2022-02-02
 
@@ -91,7 +98,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/hapakaien/archlinux-package-action/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/hapakaien/archlinux-package-action/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/hapakaien/archlinux-package-action/compare/v2.1.1...v2.2.0
 [2.1.1]: https://github.com/hapakaien/archlinux-package-action/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/hapakaien/archlinux-package-action/compare/v2.0.3...v2.1.0
 [2.0.3]: https://github.com/hapakaien/archlinux-package-action/compare/v2.0.2...v2.0.3
