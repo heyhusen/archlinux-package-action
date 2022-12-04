@@ -14,9 +14,9 @@ cp -fv "$WORKPATH"/PKGBUILD ./
 echo "::endgroup::"
 
 # Update archlinux-keyring
-if [[ $INPUT_ARCHLINUX_KEYRING == true ]]; then
+if [[ $INPUT_UPDATE_ARCHLINUX_KEYRING == true ]]; then
     echo "::group::Updating archlinux-keyring"
-    pacman -S archlinux-keyring
+    sudo pacman -S --noconfirm archlinux-keyring
     echo "::endgroup::"
 fi
 
