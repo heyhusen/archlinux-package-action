@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.1] - 2024-02-19
+
 ### Fixed
 
-- Can't pull docker image
+- Can't pull docker image, so sorry guys
 
 ## [2.2.0] - 2022-08-05
 
