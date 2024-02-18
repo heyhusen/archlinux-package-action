@@ -141,7 +141,7 @@ jobs:
 
       - name: Get branch/tag names
         id: branch-name
-        uses: tj-actions/branch-names@v7
+        uses: tj-actions/branch-names@v8
         with:
           strip_tag_prefix: "v"
 
