@@ -1,6 +1,6 @@
 # Arch Linux's package tools action
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/heyhusen/archlinux-package-action/main.yml?label=CI&style=flat-square)](https://github.com/heyhusen/archlinux-package-action/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/heyhusen/archlinux-package-action?style=flat-square)](https://github.com/heyhusen/archlinux-package-action/releases) [![GitHub](https://img.shields.io/github/license/heyhusen/archlinux-package-action?style=flat-square)](./LICENSE)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/heyhusen/archlinux-package-action/main.yml?style=flat-square&label=CI)](https://github.com/heyhusen/archlinux-package-action/actions) [![GitHub release (latest by date)](https://img.shields.io/github/v/release/heyhusen/archlinux-package-action?style=flat-square)](https://github.com/heyhusen/archlinux-package-action/releases) [![GitHub](https://img.shields.io/github/license/heyhusen/archlinux-package-action?style=flat-square)](./LICENSE)
 
 This action allows running tools needed for creating Arch Linux (and AUR) package.
 Here's what this action can do:
