@@ -39,7 +39,7 @@ inputs:
     description: 'Resolve dependencies using paru'
     default: 'false'
     required: false
-  update_archlinux_keyring:
+  archlinux_keyring:
     description: 'Update archlinux-keyring'
     default: 'true'
     required: false
@@ -56,4 +56,4 @@ runs:
     - ${{ inputs.flags }}
     - ${{ inputs.namcap }}
     - ${{ inputs.aur }}
-    - ${{ inputs.update_archlinux_keyring }}
+    - ${{ inputs.archlinux_keyring }}

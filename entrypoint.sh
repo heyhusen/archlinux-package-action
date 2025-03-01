@@ -16,7 +16,7 @@ echo "::endgroup::"
 # Update archlinux-keyring
 if [[ $INPUT_ARCHLINUX_KEYRING == true ]]; then
     echo "::group::Updating archlinux-keyring"
-    pacman -S archlinux-keyring
+    pacman -Syu archlinux-keyring
     echo "::endgroup::"
 fi
 
