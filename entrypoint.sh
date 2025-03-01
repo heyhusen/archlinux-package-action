@@ -16,7 +16,7 @@ echo "::endgroup::"
 # Update archlinux-keyring
 if [[ $INPUT_ARCHLINUX_KEYRING == true ]]; then
     echo "::group::Updating archlinux-keyring"
-    sudo pacman -Syu archlinux-keyring
+    sudo pacman -Syu --noconfirm archlinux-keyring
     echo "::endgroup::"
 fi
 
