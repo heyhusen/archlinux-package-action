@@ -1,5 +1,5 @@
 # Base image
-FROM docker.io/library/archlinux:base-devel
+FROM docker.io/library/archlinux:multilib-devel
 
 # Install dependencies
 RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
