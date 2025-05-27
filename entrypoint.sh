@@ -2,15 +2,24 @@
 set -e
 
 # Set path
-WORKPATH=$GITHUB_WORKSPACE/$INPUT_PATH
 HOME=/home/builder
-echo "::group::Copying files from $WORKPATH to $HOME/gh-action"
+echo "::group::Copying files from $GITHUB_WORKSPACE to $HOME/gh-action"
 # Set path permision
 cd $HOME
 mkdir gh-action
 cd gh-action
-cp -rfv "$GITHUB_WORKSPACE"/.git ./
-cp -fv "$WORKPATH"/PKGBUILD ./
+
+# If there is a custom path, we need to copy the whole repository
+# because we run "git diff" at several stages and without the entire
+# tree the output will be incorrect.
+if [[ -n $INPUT_PATH ]]; then
+  cp -rTfv "$GITHUB_WORKSPACE"/ ./
+  cd $INPUT_PATH
+else
+  # Without a custom path though, we can just grab the .git directory and the PKGBUILD.
+  cp -rfv "$GITHUB_WORKSPACE"/.git ./
+  cp -fv "$GITHUB_WORKSPACE"/PKGBUILD ./
+fi
 echo "::endgroup::"
 
 # Update archlinux-keyring
@@ -28,7 +37,7 @@ if [[ -n $INPUT_PKGVER ]]; then
     echo "::endgroup::"
 fi
 
-# Update pkgver
+# Update pkgrel
 if [[ -n $INPUT_PKGREL ]]; then
     echo "::group::Updating pkgrel on PKGBUILD"
     sed -i "s:^pkgrel=.*$:pkgrel=$INPUT_PKGREL:g" PKGBUILD
@@ -74,6 +83,8 @@ if [[ -n $INPUT_FLAGS ]]; then
     echo "::endgroup::"
 fi
 
+WORKPATH=$GITHUB_WORKSPACE/$INPUT_PATH
+WORKPATH=${WORKPATH%/} # Remove trailing slash if $INPUT_PATH is empty
 echo "::group::Copying files from $HOME/gh-action to $WORKPATH"
 sudo cp -fv PKGBUILD "$WORKPATH"/PKGBUILD
 if [[ -e .SRCINFO ]]; then

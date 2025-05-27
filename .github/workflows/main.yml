@@ -24,22 +24,28 @@ jobs:
           sed -i 's/.*image\:.*/  image\: \"Dockerfile\"/' action.yml
           cat action.yml
 
-      - name: Get sample PKGBUILD
-        run: wget https://github.com/${{ github.repository_owner }}/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
-
+      - name: Get sample package
+        run: |
+          mkdir visual-studio-code-bin
+          pushd visual-studio-code-bin
+          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/PKGBUILD
+          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/.SRCINFO
+          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/visual-studio-code-bin.install
+          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/visual-studio-code-bin.sh
+          popd
       - name: Running test
         uses: ./
         with:
-          pkgver: '0.4.26'
-          pkgrel: 2
+          pkgver: '1.100.1'
+          pkgrel: 1
           updpkgsums: true
           srcinfo: true
+          path: 'visual-studio-code-bin'
 
       - name: Show diff
         run: |
           ls -la
-          git diff PKGBUILD
-          git diff .SRCINFO
+          git diff
 
   publish:
     name: Publish OCI image
@@ -126,8 +132,7 @@ jobs:
       - name: Show diff
         run: |
           ls -la
-          git diff PKGBUILD
-          git diff .SRCINFO
+          git diff
 
   release:
     name: Release
