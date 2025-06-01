@@ -26,21 +26,23 @@ jobs:
 
       - name: Get sample package
         run: |
-          mkdir visual-studio-code-bin
-          pushd visual-studio-code-bin
-          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/PKGBUILD
-          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/.SRCINFO
-          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/visual-studio-code-bin.install
-          wget https://github.com/dcelasun/pkgbuilds/raw/ee68e4c19c40a0a36a50e289259fcfd94f43786d/visual-studio-code-bin/visual-studio-code-bin.sh
+          # Spotify 1:1.2.63.394-1
+          mkdir spotify
+          pushd spotify
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/PKGBUILD
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/.SRCINFO
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/LICENSE
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.protocol
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.sh
           popd
       - name: Running test
         uses: ./
         with:
-          pkgver: '1.100.1'
-          pkgrel: 1
+          pkgrel: 2
           updpkgsums: true
           srcinfo: true
-          path: 'visual-studio-code-bin'
+          path: 'spotify'
+          pgpkeys: 'C85668DF69375001'
 
       - name: Show diff
         run: |

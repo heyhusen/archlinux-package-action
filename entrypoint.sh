@@ -9,6 +9,14 @@ cd $HOME
 mkdir gh-action
 cd gh-action
 
+if [[ -n $INPUT_PGPKEYS ]]; then
+  echo "::group::Loading PGP keys"
+  for key in ${INPUT_PGPKEYS//,/$'\n'}; do
+    gpg --keyserver $INPUT_PGPKEYSERVER --recv-keys $key
+  done
+  echo "::endgroup::"
+fi
+
 # If there is a custom path, we need to copy the whole repository
 # because we run "git diff" at several stages and without the entire
 # tree the output will be incorrect.
@@ -33,7 +41,7 @@ fi
 if [[ -n $INPUT_PKGVER ]]; then
     echo "::group::Updating pkgver on PKGBUILD"
     sed -i "s:^pkgver=.*$:pkgver=$INPUT_PKGVER:g" PKGBUILD
-    git diff PKGBUILD
+    git --no-pager diff PKGBUILD
     echo "::endgroup::"
 fi
 
@@ -41,7 +49,7 @@ fi
 if [[ -n $INPUT_PKGREL ]]; then
     echo "::group::Updating pkgrel on PKGBUILD"
     sed -i "s:^pkgrel=.*$:pkgrel=$INPUT_PKGREL:g" PKGBUILD
-    git diff PKGBUILD
+    git --no-pager diff PKGBUILD
     echo "::endgroup::"
 fi
 
@@ -49,7 +57,7 @@ fi
 if [[ $INPUT_UPDPKGSUMS == true ]]; then
     echo "::group::Updating checksums on PKGBUILD"
     updpkgsums
-    git diff PKGBUILD
+    git --no-pager diff PKGBUILD
     echo "::endgroup::"
 fi
 
@@ -57,7 +65,7 @@ fi
 if [[ $INPUT_SRCINFO == true ]]; then
     echo "::group::Generating new .SRCINFO based on PKGBUILD"
     makepkg --printsrcinfo >.SRCINFO
-    git diff .SRCINFO
+    git --no-pager diff .SRCINFO
     echo "::endgroup::"
 fi
 
