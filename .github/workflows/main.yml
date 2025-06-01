@@ -24,22 +24,30 @@ jobs:
           sed -i 's/.*image\:.*/  image\: \"Dockerfile\"/' action.yml
           cat action.yml
 
-      - name: Get sample PKGBUILD
-        run: wget https://github.com/${{ github.repository_owner }}/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
-
+      - name: Get sample package
+        run: |
+          # Spotify 1:1.2.63.394-1
+          mkdir spotify
+          pushd spotify
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/PKGBUILD
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/.SRCINFO
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/LICENSE
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.protocol
+          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.sh
+          popd
       - name: Running test
         uses: ./
         with:
-          pkgver: '0.4.26'
           pkgrel: 2
           updpkgsums: true
           srcinfo: true
+          path: 'spotify'
+          pgpkeys: 'C85668DF69375001'
 
       - name: Show diff
         run: |
           ls -la
-          git diff PKGBUILD
-          git diff .SRCINFO
+          git diff
 
   publish:
     name: Publish OCI image
@@ -126,8 +134,7 @@ jobs:
       - name: Show diff
         run: |
           ls -la
-          git diff PKGBUILD
-          git diff .SRCINFO
+          git diff
 
   release:
     name: Release

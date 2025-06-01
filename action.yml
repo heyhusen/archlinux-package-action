@@ -39,14 +39,22 @@ inputs:
     description: 'Resolve dependencies using paru'
     default: 'false'
     required: false
-  update_archlinux_keyring:
+  archlinux_keyring:
     description: 'Update archlinux-keyring'
     default: 'true'
+    required: false
+  pgpkeys:
+    description: 'Comma-separated pgp keys'
+    default: ''
+    required: false
+  pgpkeyserver:
+    description: 'PGP key server'
+    default: 'hkps://keyserver.ubuntu.com'
     required: false
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/heyhusen/archlinux-package-action:2'
+  image: Dockerfile
   args:
     - ${{ inputs.path }}
     - ${{ inputs.pkgver }}
@@ -56,4 +64,6 @@ runs:
     - ${{ inputs.flags }}
     - ${{ inputs.namcap }}
     - ${{ inputs.aur }}
-    - ${{ inputs.update_archlinux_keyring }}
+    - ${{ inputs.archlinux_keyring }}
+    - ${{ inputs.pgpkeys }}
+    - ${{ inputs.pgpkeyserver }}

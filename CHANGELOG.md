@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.4.0] - 2025-06-01
+
+### Added
+
+- Loading PGP Key support - by @dcelasun
+
+## [2.3.0] - 2025-05-27
+
+### Added
+
+- Copy all package files, not just PKGBUILD - by @dcelasun
+- Multilib support - by @dcelasun
+
+### Fixed
+
+- Keryring is not updated - by @cilki
+
 ## [2.2.1] - 2024-02-19
 
 ### Fixed
@@ -104,7 +121,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/hapakaien/archlinux-package-action/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/hapakaien/archlinux-package-action/compare/v2.4.0...HEAD
+[2.4.0]: https://github.com/hapakaien/archlinux-package-action/compare/v2.3.0...v2.4.0
+[2.3.0]: https://github.com/hapakaien/archlinux-package-action/compare/v2.2.1...v2.3.0
+[2.2.1]: https://github.com/hapakaien/archlinux-package-action/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/hapakaien/archlinux-package-action/compare/v2.1.1...v2.2.0
 [2.1.1]: https://github.com/hapakaien/archlinux-package-action/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/hapakaien/archlinux-package-action/compare/v2.0.3...v2.1.0
