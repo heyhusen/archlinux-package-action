@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Update action.yml to build locally
         run: |
@@ -59,7 +59,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Log in to ghcr.io
         uses: redhat-actions/podman-login@v1
@@ -108,7 +108,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Get sample PKGBUILD
         run: wget https://github.com/${{ github.repository_owner }}/plenti-bin/raw/f5ffaaee02a2119aa16f6b7a27e87e198e096b47/PKGBUILD
@@ -148,7 +148,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Get branch/tag names
         id: branch-name
