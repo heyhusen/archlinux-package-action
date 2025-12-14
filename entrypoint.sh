@@ -76,11 +76,11 @@ if [[ $INPUT_NAMCAP == true ]]; then
     echo "::endgroup::"
 fi
 
-# Install depends using paru from aur
+# Install depends using yay from aur
 if [[ $INPUT_AUR == true ]]; then
-    echo "::group::Installing depends using paru"
+    echo "::group::Installing depends using yay"
     source PKGBUILD
-    paru -Syu --removemake --needed --noconfirm "${depends[@]}" "${makedepends[@]}"
+    yay -Syu --removemake --needed --noconfirm "${depends[@]}" "${makedepends[@]}"
     echo "::endgroup::"
 fi
 
