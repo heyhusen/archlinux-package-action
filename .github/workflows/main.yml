@@ -26,14 +26,14 @@ jobs:
 
       - name: Get sample package
         run: |
-          # Spotify 1:1.2.63.394-1
+          # Spotify 1:1.2.77.358-1
           mkdir spotify
           pushd spotify
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/PKGBUILD
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/.SRCINFO
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/LICENSE
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.protocol
-          wget https://github.com/christian-heusel/aur/raw/5032e51a0b493cb7149264ec27a761ac85c81933/spotify/spotify.sh
+          wget https://github.com/christian-heusel/aur/raw/3d22bb1890fb41b709b8e3991816455a0b508b77/spotify/PKGBUILD
+          wget https://github.com/christian-heusel/aur/raw/3d22bb1890fb41b709b8e3991816455a0b508b77/spotify/.SRCINFO
+          wget https://github.com/christian-heusel/aur/raw/3d22bb1890fb41b709b8e3991816455a0b508b77/spotify/LICENSE
+          wget https://github.com/christian-heusel/aur/raw/3d22bb1890fb41b709b8e3991816455a0b508b77/spotify/spotify.protocol
+          wget https://github.com/christian-heusel/aur/raw/3d22bb1890fb41b709b8e3991816455a0b508b77/spotify/spotify.sh
           popd
       - name: Running test
         uses: ./
@@ -42,7 +42,7 @@ jobs:
           updpkgsums: true
           srcinfo: true
           path: 'spotify'
-          pgpkeys: 'C85668DF69375001'
+          pgpkeys: '5384CE82BA52C83A'
 
       - name: Show diff
         run: |

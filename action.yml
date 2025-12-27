@@ -36,7 +36,7 @@ inputs:
     default: 'true'
     required: false
   aur:
-    description: 'Resolve dependencies using paru'
+    description: 'Resolve dependencies using yay'
     default: 'false'
     required: false
   archlinux_keyring:

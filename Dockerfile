@@ -10,9 +10,9 @@ RUN useradd -m builder && \
 WORKDIR /home/builder
 USER builder
 
-# Install paru
-RUN git clone https://aur.archlinux.org/paru-bin.git
-RUN cd paru-bin && makepkg -si --noconfirm
+# Install yay
+RUN git clone https://aur.archlinux.org/yay-bin.git
+RUN cd yay-bin && makepkg -si --noconfirm
 
 # Copy files
 COPY LICENSE README.md /
