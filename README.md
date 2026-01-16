@@ -56,7 +56,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
 ```
 
 #### 2. Only generate .SRCINFO
@@ -76,7 +76,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
         with:
           flags: ''
           namcap: false
@@ -100,7 +100,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
         with:
           flags: ''
           namcap: false
@@ -124,7 +124,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Validate package
-        uses: heyhusen/archlinux-package-action@v2
+        uses: heyhusen/archlinux-package-action@v3
         with:
           path: package
           flags: '-si --noconfirm'
