@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.1] - 2026-06-21
+
+### Fixed
+
+- Error CI build because changed Spotify upstream url - by @dcelasun
+
 ## [3.0.0] - 2026-01-16
 
 ### Changed
